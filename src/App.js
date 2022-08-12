@@ -2,13 +2,13 @@ import './App.css';
 import Navbar from './components/Navbar';
 import FormText from './components/FormText';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import React,{useState} from 'react'
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 
 function App() {
@@ -25,6 +25,8 @@ function App() {
       setAlert(null)
     },1000)
   }
+
+
   const toggleMode=()=>{
     if(mode=== 'light'){
       setMode('dark')
@@ -40,23 +42,24 @@ function App() {
     }
   }
 
+
   return (
     <>
-    {/* <Router> */}
+    <Router>
     <Navbar title="TextUtils" aboutText="About Us" toggleMode={toggleMode} modeFontcolor={modeFontcolor} mode={mode}/>
     <Alert alert={alert}/>
     <div className="container my-3">
-      {/* <Switch>
+      <Switch>
           <Route exact path="/about">
-            <About/>
+            <About mode={mode}/>
           </Route>
-           */}
-          {/* <Route exact path="/"> */}
-            <FormText heading="Enter the text to analyze below" showAlert={showAlert} mode={mode}/>
-          {/* </Route>
-      </Switch> */}
+          
+          <Route exact path="/">
+            <FormText heading="Try TextUtils - Word Counter, Character Counter, Remove Extra Spaces" showAlert={showAlert} mode={mode}/>
+          </Route>
+      </Switch>
     </div>
-    {/* </Router> */}
+    </Router>
     </>
   );
 }
